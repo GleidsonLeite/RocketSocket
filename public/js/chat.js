@@ -57,7 +57,7 @@ function addUser(user) {
 
 document.getElementById("users_list").addEventListener("click", event => {
   if(event.target && event.target.matches("li.user_name_list")) {
-    const idUser = event.target.getAttribute("idUser");
+    const idUser = event.target.getAttribute("iduser");
     socket.emit("start_chat", {idUser}, data => {
       roomId = data.idChatRoom
     })
