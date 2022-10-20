@@ -1,3 +1,4 @@
+import { injectable } from "tsyringe";
 import { User } from "../schemas/User";
 
 interface CreateUserDTO {
@@ -7,6 +8,8 @@ interface CreateUserDTO {
   name: string;
 }
 
+
+@injectable()
 class CreateUserService {
   async execute({ avatar, email, name, socket_id }:CreateUserDTO) {
     const foundUser = await User.findOne({
@@ -24,7 +27,8 @@ class CreateUserService {
             avatar,
             name
           }
-        }
+        },
+        {new: true}
       )
 
       return user
